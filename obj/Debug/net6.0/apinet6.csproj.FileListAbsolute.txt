@@ -24,3 +24,4 @@ G:\estudos\curso\api\apinet6\obj\Debug\net6.0\refint\apinet6.dll
 G:\estudos\curso\api\apinet6\obj\Debug\net6.0\apinet6.pdb
 G:\estudos\curso\api\apinet6\obj\Debug\net6.0\apinet6.genruntimeconfig.cache
 G:\estudos\curso\api\apinet6\obj\Debug\net6.0\ref\apinet6.dll
+G:\estudos\curso\api\apinet6\bin\Debug\net6.0\appsettings.Staging.json

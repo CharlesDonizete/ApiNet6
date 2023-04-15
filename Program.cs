@@ -4,34 +4,32 @@ var builder = WebApplication.CreateBuilder(args);
 var app = builder.Build();
 
 app.MapGet("/", () => "Hello World 4!");
-app.MapGet("/user", () => new { Name = "Charles", Age = 37 });
-app.MapGet("/AddHeader", (HttpResponse response) =>
-{
-    response.Headers.Add("Teste", "Teste Charles");
-    return new { Name = "Charles", Age = 37 };
-});
 
-app.MapPost("/saveproduct", (Product product) =>
+app.MapPost("/products", (Product product) =>
 {
     ProductRepository.Add(product);
+    return Results.Created($"/products/{product.Code}", product.Code);
 });
 
-app.MapGet("/getproduct/{code}", ([FromRoute] string code) =>
+app.MapGet("/products/{code}", ([FromRoute] string code) =>
 {
     var product = ProductRepository.GetBy(code);
-    return product;
+    if (product != null) return Results.Ok(product);
+    return Results.NotFound();
 });
 
-app.MapPut("/editproduct", (Product product) =>
+app.MapPut("/products", (Product product) =>
 {
     var productSaved = ProductRepository.GetBy(product.Code);
     productSaved.Name = product.Name;
+    return Results.Ok();
 });
 
-app.MapDelete("/deleteproduct/{code}", ([FromRoute] string code) =>
+app.MapDelete("/products/{code}", ([FromRoute] string code) =>
 {
     var productSaved = ProductRepository.GetBy(code);
     ProductRepository.Remove(productSaved);
+    return Results.Ok();
 });
 
 app.Run();

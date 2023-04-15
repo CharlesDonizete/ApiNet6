@@ -1,24 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "G:\\estudos\\curso\\api\\apinet6\\apinet6.csproj": {}
+    "C:\\workspace\\ApiNet6\\apinet6.csproj": {}
   },
   "projects": {
-    "G:\\estudos\\curso\\api\\apinet6\\apinet6.csproj": {
+    "C:\\workspace\\ApiNet6\\apinet6.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "G:\\estudos\\curso\\api\\apinet6\\apinet6.csproj",
+        "projectUniqueName": "C:\\workspace\\ApiNet6\\apinet6.csproj",
         "projectName": "apinet6",
-        "projectPath": "G:\\estudos\\curso\\api\\apinet6\\apinet6.csproj",
+        "projectPath": "C:\\workspace\\ApiNet6\\apinet6.csproj",
         "packagesPath": "C:\\Users\\Charles\\.nuget\\packages\\",
-        "outputPath": "G:\\estudos\\curso\\api\\apinet6\\obj\\",
+        "outputPath": "C:\\workspace\\ApiNet6\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
           "C:\\Users\\Charles\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [

@@ -1,6 +1,9 @@
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddDbContext<ApplicationDbContext>();
+
 var app = builder.Build();
 var configuration = app.Configuration;
 ProductRepository.Init(configuration);
@@ -70,4 +73,12 @@ public class Product
 {
     public string Code { get; set; }
     public string Name { get; set; }
+}
+
+public class ApplicationDbContext : DbContext
+{
+    public DbSet<Product> Products { get; set; }
+
+    protected override void OnConfiguring(DbContextOptionsBuilder options)
+        => options.UseSqlServer("Data Source = DESKTOP-U0N4N3T\\SQLEXPRESS;Initial Catalog = Products; Integrated Security = False; User ID = sa;Password=123; Connect Timeout = 15; Encrypt = False; TrustServerCertificate = False");
 }

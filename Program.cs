@@ -9,10 +9,34 @@ ProductRepository.Init(configuration);
 
 app.MapGet("/", () => "Hello World 4!");
 
-app.MapPost("/products", (Product product) =>
+app.MapPost("/products", (ProductRequest productRequest, ApplicationDbContext context) =>
 {
-    ProductRepository.Add(product);
-    return Results.Created($"/products/{product.Code}", product.Code);
+    var category = context.Categories.Where(x => x.Id == productRequest.CategoryId).First();
+    var product = new Product
+    {
+        Code = productRequest.Code,
+        Name = productRequest.Name,
+        Description = productRequest.Description,
+        Category = category
+    };
+
+    if (productRequest.Tags != null) productRequest.Tags.ForEach(item => product.Tags.Add(new Tag { Name = item }));
+
+    // if (productRequest.Tags != null)
+    // {
+    //     // product.Tags = new List<Tag>();         
+
+    //     foreach (var item in productRequest.Tags)
+    //     {
+    //         product.Tags.Add(new Tag { Name = item });
+    //     }
+    // }
+
+    context.Products.Add(product);
+
+    context.SaveChanges();
+
+    return Results.Created($"/products/{product.Id}", product.Id);
 });
 
 app.MapGet("/products/{code}", ([FromRoute] string code) =>
